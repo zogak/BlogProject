@@ -1,11 +1,10 @@
 package com.codepresso.codepressoblog.controller;
 
+import com.codepresso.codepressoblog.controller.dto.PostRequestDto;
 import com.codepresso.codepressoblog.controller.dto.PostResponseDto;
 import com.codepresso.codepressoblog.service.PostService;
 import com.codepresso.codepressoblog.vo.Post;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +27,13 @@ public class PostController {
         }
 
         return postResponseDtoList;
+    }
+
+    @PostMapping("/post")
+    public String createPost(@RequestBody PostRequestDto postDto){
+        Post post = postDto.getPost();
+        postService.savePost(post);
+
+        return "success";
     }
 }

@@ -9,7 +9,7 @@ $(function(){
         }).done(function(response){
           for(var post of response){
               $("#more-posts").append("<div class=\"post-preview\">" +
-                  "<a href=\"#\">" +
+                  "<a href=\"/post/" + post.id + "\">" +
                   "<h2 class=\"post-title\">" +
                   post.title +
                   "</h2>\n" +
@@ -21,6 +21,26 @@ $(function(){
           }
         });
         $(this).attr("current-page", next_page);
+    });
+
+    $("#create_button").click(function(){
+        var title = $("#post-title").val();
+        var username = $("#post-username").val();
+        var content = $("#post-content").val();
+
+        $.ajax({
+            method : "POST",
+            url : "/post",
+            data : JSON.stringify({
+                "title" : title,
+                "username" : username,
+                "content" : content
+            }),
+            contentType : "application/json"
+        }).done(function(response){
+           console.log("Post creation success!");
+           window.location.href = "/";
+        });
     });
 
     $(".comment-edit").hide();
