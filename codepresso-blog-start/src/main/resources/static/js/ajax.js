@@ -43,6 +43,27 @@ $(function(){
         });
     });
 
+    $("#edit_button").click(function(){
+        var id = $("#edit-post-id").val();
+        var title = $("#edit-post-title").val();
+        var content = $("#edit-post-content").val();
+
+        $.ajax({
+            method : "PUT",
+            url : "/post",
+            data : JSON.stringify({
+                "id" : id,
+                "title" : title,
+                "content" : content
+            }),
+            contentType: "application/json"
+        }).done(function(response){
+           console.log("Post creation success");
+           window.location.href = "/post/" + id;
+        });
+
+    });
+
     $(".comment-edit").hide();
 
     $(".comment-edit-form-button").click(function(){

@@ -30,4 +30,9 @@ public class PostService {
         Integer result = postMapper.save(post);
         return result == 1;
     }
+
+    public boolean updatePost(Post post){
+        Integer result = postMapper.update(post);
+        return result == 1;
+    }
 }
