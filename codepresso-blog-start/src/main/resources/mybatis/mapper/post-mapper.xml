@@ -34,4 +34,9 @@
         WHERE id = #{post.id};
     </update>
 
+    <delete id = "delete">
+        DELETE FROM post
+        WHERE id = #{id};
+    </delete>
+
 </mapper>

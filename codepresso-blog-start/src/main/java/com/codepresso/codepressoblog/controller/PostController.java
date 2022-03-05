@@ -4,6 +4,7 @@ import com.codepresso.codepressoblog.controller.dto.PostRequestDto;
 import com.codepresso.codepressoblog.controller.dto.PostResponseDto;
 import com.codepresso.codepressoblog.service.PostService;
 import com.codepresso.codepressoblog.vo.Post;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -38,10 +39,16 @@ public class PostController {
     }
 
     @PutMapping("/post")
-    public String updatePost(@RequestBody PostRequestDto postDto){
+    public String updatePost(@RequestBody PostRequestDto postDto) {
         Post post = postDto.getPost();
         postService.updatePost(post);
 
+        return "success";
+    }
+
+    @Delete("/post/{id}")
+    public String deletePost(@PathVariable Integer id){
+        postService.deletePost(id);
         return "success";
     }
 }

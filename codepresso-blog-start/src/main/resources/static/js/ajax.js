@@ -61,7 +61,32 @@ $(function(){
            console.log("Post creation success");
            window.location.href = "/post/" + id;
         });
+    });
 
+    $("#delete_button").click(function(){
+
+
+
+    });
+
+    $("#comment-save-button").click(function(){
+        var username = $("#comment-username").val();
+        var content = $("#comment-content").val();
+        var post_id = $("#post-id").val();
+
+        $.ajax({
+            method : "POST",
+            url : "/comment",
+            data : JSON.stringify({
+                "username" : username,
+                "content" : content,
+                "post_id" : post_id
+            }),
+            contentType : "application/json"
+        }).done(function(response) {
+                console.log("Comment creation success");
+                window.location.reload();
+            });
     });
 
     $(".comment-edit").hide();
