@@ -14,6 +14,6 @@ public interface CommentMapper {
     Integer numOfCommentsOfPost(@Param("post_id") Integer post_id);
     List<Comment> findCommentsOfPostByLimit(@Param("limit") Integer limit, @Param("offset") Integer offset);
     Integer saveComment(@Param("comment") Comment comment);
-    Integer updateComment(@Param("id") Integer id);
+    Integer updateComment(@Param("comment") Comment comment);
     Integer deleteComment(@Param("id") Integer id);
 }

@@ -29,4 +29,9 @@ public class CommentService {
         return result == 1;
     }
 
+    public boolean updateComment(Comment comment){
+        Integer result = commentMapper.updateComment(comment);
+        return result == 1;
+    }
+
 }

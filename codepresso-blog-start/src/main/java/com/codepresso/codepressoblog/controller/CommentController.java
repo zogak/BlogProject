@@ -48,4 +48,12 @@ public class CommentController {
 
         return "success";
     }
+
+    @PutMapping("/comment")
+    public String updateComment(@RequestBody CommentRequestDto commentDto){
+        Comment comment = commentDto.getComment();
+        commentService.updateComment(comment);
+
+        return "success";
+    }
 }

@@ -35,11 +35,4 @@ public class PostPageController {
         return "post_edit";
     }
 
-    @RequestMapping("/post/delete/{id}")
-    public String getIndexPage(@PathVariable Integer id){
-        postService.deletePost(id);
-        return "index";
-    }
-
-
 }

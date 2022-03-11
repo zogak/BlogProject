@@ -21,5 +21,16 @@
         WHERE post_id = #{post_id};
     </select>
 
+    <update id="updateComment">
+        UPDATE comment
+        SET (username, content)
+        VALUES (#{comment.username}, #{comment.content})
+        WHERE post_id = #{post_id};
+    </update>
+
+    <delete id="deleteComment">
+        DELETE FROM comment
+        WHERE id = #{id};
+    </delete>
 
 </mapper>

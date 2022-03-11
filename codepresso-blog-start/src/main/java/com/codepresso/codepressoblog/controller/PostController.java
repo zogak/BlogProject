@@ -46,8 +46,8 @@ public class PostController {
         return "success";
     }
 
-    @Delete("/post/{id}")
-    public String deletePost(@PathVariable Integer id){
+    @DeleteMapping("/post")
+    public String deletePost(@RequestParam Integer id){
         postService.deletePost(id);
         return "success";
     }
